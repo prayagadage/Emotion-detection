@@ -1,92 +1,146 @@
-# Emotion Detection System
+<div align="center">
 
-An AI-powered real-time **Emotion Detection System** that detects faces and recognizes emotions from a webcam feed. The system uses a pre-trained deep learning model to classify emotions such as happy, sad, angry, surprised, and more.
-```
+# 😊 Emotion Detection System
+
+**Real-time face and emotion recognition from your webcam using deep learning.**
+
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange?logo=tensorflow)](https://www.tensorflow.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-Face%20Detection-green?logo=opencv)](https://opencv.org/)
+[![Model](https://img.shields.io/badge/Model-mini__XCEPTION-blueviolet)](https://github.com/oarriaga/face_classification)
+
+</div>
+
 ---
 
-## 📸 Features
-```bash
-- Real-time **Face Detection** using OpenCV's Haar Cascade.
-- Emotion recognition powered by a pre-trained `_mini_XCEPTION` model.
-- Displays probabilities of detected emotions with visual feedback.
-- Compatible with live webcam input.
+## 📌 Overview
+
+**Emotion Detection System** is a real-time computer vision application that detects faces from a live webcam feed and classifies the emotion on each face — instantly and accurately.
+
+It combines **OpenCV's Haar Cascade** for fast face detection and a pre-trained **mini XCEPTION** deep learning model for emotion classification, outputting both the emotion label and confidence score on screen.
+
+---
+
+## 🎭 Detected Emotions
+
+| Emotion | Emoji |
+|---|---|
+| Angry | 😠 |
+| Disgust | 🤢 |
+| Scared | 😨 |
+| Happy | 😊 |
+| Sad | 😢 |
+| Surprised | 😲 |
+| Neutral | 😐 |
+
+---
+
+## 🛠️ How It Works
+
+```
+Webcam Feed
+     ↓
+Frame Capture (OpenCV)
+     ↓
+Grayscale Conversion
+     ↓
+Face Detection (Haar Cascade)
+     ↓
+ROI Extraction → Resize (64×64) → Normalize
+     ↓
+Emotion Prediction (mini XCEPTION model)
+     ↓
+Overlay Bounding Box + Emotion Label on Frame
+     ↓
+Live Display
 ```
 
-## ⚙️ Installation
+1. **Face Detection** — Haar Cascade (`haarcascade_frontalface_default.xml`) scans each frame and detects face regions
+2. **Preprocessing** — Detected face regions are converted to grayscale, resized to `64×64`, and normalized
+3. **Emotion Classification** — The `mini_XCEPTION` model predicts probabilities across 7 emotion classes
+4. **Visualization** — Bounding boxes and emotion labels with confidence scores are drawn live on the feed
+
+---
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Python **3.7+**
+- A working webcam
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/emotion-detection-system.git
-cd emotion-detection-system
+git clone https://github.com/prayagadage/Emotion-detection.git
+cd Emotion-detection
 ```
 
-### 2. Set Up Virtual Environment (Recommended)
+### 2. Set Up Virtual Environment
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
+source venv/bin/activate     # macOS/Linux
+venv\Scripts\activate        # Windows
 ```
 
 ### 3. Install Dependencies
-Install the required libraries:
 ```bash
 pip install tensorflow keras numpy opencv-python imutils
 ```
 
-## 🚀 Running the Project
+---
 
-Start the Emotion Detection System:
+## 🚀 Run the App
+
 ```bash
 python face_detection.py
 ```
 
-### Key Features
-1. **Live Webcam Feed:**
-   - Detects faces and displays bounding boxes.
-   - Predicts and shows emotions with probabilities.
-2. **Exit:**
-   - Press `q` to quit the program.
+- The webcam feed opens automatically
+- Detected faces are highlighted with bounding boxes
+- Emotion label and confidence score appear above each face
+- Press **`q`** to quit
 
-## 📦 Dependencies
+---
 
-The following Python libraries are required:
-- TensorFlow
-- Keras
-- OpenCV
-- NumPy
-- Imutils
+## 📂 Project Structure
 
-Install them using:
-```bash
-pip install tensorflow keras numpy opencv-python imutils
+```
+Emotion-detection/
+├── face_detection.py                   # Main application — detection + prediction loop
+├── _mini_XCEPTION.102-0.66.hdf5        # Pre-trained emotion classification model
+├── haarcascade_frontalface_default.xml # OpenCV Haar Cascade for face detection
+└── README.md
 ```
 
+---
 
-## 🛠️ How It Works
+## 📦 Tech Stack
 
-1. **Face Detection:**  
-   - The Haar Cascade (`haarcascade_frontalface_default.xml`) detects faces in video frames.  
+| Tool | Purpose |
+|---|---|
+| [OpenCV](https://opencv.org/) | Face detection & video capture |
+| [TensorFlow / Keras](https://www.tensorflow.org/) | Deep learning model inference |
+| [mini XCEPTION](https://github.com/oarriaga/face_classification) | Emotion classification model |
+| [NumPy](https://numpy.org/) | Array operations & preprocessing |
+| [Imutils](https://github.com/jrosebr1/imutils) | Frame resizing utilities |
 
-2. **Emotion Prediction:**  
-   - The `_mini_XCEPTION.102-0.66.hdf5` model predicts emotions for detected faces.  
+---
 
-3. **Display:**  
-   - Bounding boxes and emotion labels are displayed on the webcam feed.  
+## 🔮 Roadmap
 
+- [x] Real-time single face emotion detection
+- [x] 7-class emotion classification with confidence score
+- [ ] Multi-face detection support
+- [ ] GPU acceleration for faster inference
+- [ ] Save annotated video output
+- [ ] Streamlit / Gradio web interface
+- [ ] Additional emotions (confusion, excitement)
 
-## 🎯 Future Enhancements
+---
 
-- Support for detecting and analyzing multiple faces simultaneously.
-- Add additional emotions like confusion, excitement, etc.
-- GPU acceleration for faster performance.
-- Save video output with detected emotions and annotations.
+## 📬 Author
 
-## 🧑‍💻 Contributing
+**Prayag Adage**
+GitHub: [@prayagadage](https://github.com/prayagadage)
+Location: Pimpri-Chinchwad, Maharashtra, India
 
-Contributions are welcome!  
-Feel free to open an issue or submit a pull request.
-
-## 🙌 Acknowledgments
-
-- **[OpenCV](https://opencv.org/):** For face detection.  
-- **Mini XCEPTION Model:** For emotion detection.
+⭐ Star this repo if you found it useful!
