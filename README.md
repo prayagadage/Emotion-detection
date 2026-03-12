@@ -1,6 +1,3 @@
-**Emotion Detection System**: (Level- Medium)
-
-```markdown
 # Emotion Detection System
 
 An AI-powered real-time **Emotion Detection System** that detects faces and recognizes emotions from a webcam feed. The system uses a pre-trained deep learning model to classify emotions such as happy, sad, angry, surprised, and more.
